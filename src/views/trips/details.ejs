@@ -46,7 +46,7 @@
         </div>
 
         <div class="route-stations">
-            <h2>Route</h2>
+            <h2>Trip</h2>
             <div class="stations">
                 <div class="station">
                     <span class="station-label">Start</span>
@@ -90,7 +90,7 @@
                         <span class="day-badge"><%= day.substring(0, 3) %></span>
                         <% }); %>
                     </div>
-                    <a href="/routes/booking/<%= schedule.id %>" class="book-btn">Book Now</a>
+                    <a href="/trips/booking/<%= schedule.id %>" class="book-btn">Book Now</a>
                 </div>
                 <% }); %>
             </div>

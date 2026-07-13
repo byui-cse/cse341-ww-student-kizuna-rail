@@ -1,9 +1,9 @@
 import { generateConfirmationCode } from '../includes/helpers.js';
 import { getDb as db } from './db-in-file.js';
 
-// ROUTE MODEL FUNCTIONS
+// TRIP MODEL FUNCTIONS
 
-export const getAllRoutes = async () => {
+export const getAllTrips = async () => {
     return db().routes;
 };
 
@@ -17,23 +17,23 @@ export const getListOfSeasons = async () => {
     return Array.from(seasons);
 };
 
-export const getRouteById = async (routeId) => {
-    return db().routes.find(route => route.id == routeId) || null;
+export const getTripById = async (tripId) => {
+    return db().routes.find(route => route.id == tripId) || null;
 };
 
-export const getRoutesByRegion = async (region) => {
+export const getTripsByRegion = async (region) => {
     return db().routes.filter(route => route.region.toLowerCase() == region.toLowerCase());
 };
 
-export const getRoutesBySeason = async (season) => {
+export const getTripsBySeason = async (season) => {
     return db().routes.filter(route => route.bestSeason.toLowerCase() == season.toLowerCase());
 };
 
-export const getRoutesByMonth = async (month) => {
+export const getTripsByMonth = async (month) => {
     return db().routes.filter(route => route.operatingMonths.includes(month));
 };
 
-export const getRoutesByDuration = async () => {
+export const getTripsByDuration = async () => {
     return [...db().routes].sort((a, b) => {
         const aDuration = parseFloat(a.duration);
         const bDuration = parseFloat(b.duration);
@@ -41,7 +41,7 @@ export const getRoutesByDuration = async () => {
     });
 };
 
-export const getRoutesByDistance = async () => {
+export const getTripsByDistance = async () => {
     return [...db().routes].sort((a, b) => a.distance - b.distance);
 };
 
@@ -77,12 +77,12 @@ export const getScheduleById = async (scheduleId) => {
     return db().schedules.find(schedule => schedule.id == scheduleId) || null;
 };
 
-export const getSchedulesByRoute = async (routeId) => {
-    return db().schedules.filter(schedule => schedule.routeId == routeId);
+export const getSchedulesByTrip = async (tripId) => {
+    return db().schedules.filter(schedule => schedule.routeId == tripId);
 };
 
-export const getAvailableSchedulesByRoute = async (routeId) => {
-    return db().schedules.filter(schedule => schedule.routeId == routeId && schedule.status == true);
+export const getAvailableSchedulesByTrip = async (tripId) => {
+    return db().schedules.filter(schedule => schedule.routeId == tripId && schedule.status == true);
 };
 
 export const getSchedulesByDay = async (day) => {
@@ -111,65 +111,65 @@ export const getTicketClassesByPrice = async () => {
 
 // COMBINED/UTILITY MODEL FUNCTIONS
 
-export const getRouteWithStations = async (routeId) => {
-    const route = await getRouteById(routeId);
-    if (!route) return null;
+export const getTripWithStations = async (tripId) => {
+    const trip = await getTripById(tripId);
+    if (!trip) return null;
 
-    const startStation = await getStationById(route.startStation);
-    const endStation = await getStationById(route.endStation);
+    const startStation = await getStationById(trip.startStation);
+    const endStation = await getStationById(trip.endStation);
 
     return {
-        ...route,
+        ...trip,
         startStationDetails: startStation,
         endStationDetails: endStation
     };
 };
 
-export const getRouteWithSchedules = async (routeId) => {
-    const route = await getRouteById(routeId);
-    if (!route) return null;
+export const getTripWithSchedules = async (tripId) => {
+    const trip = await getTripById(tripId);
+    if (!trip) return null;
 
-    const routeSchedules = await getSchedulesByRoute(routeId);
+    const tripSchedules = await getSchedulesByTrip(tripId);
 
     return {
-        ...route,
-        schedules: routeSchedules
+        ...trip,
+        schedules: tripSchedules
     };
 };
 
-export const getCompleteRouteDetails = async (routeId) => {
-    const route = await getRouteById(routeId);
-    if (!route) return null;
+export const getCompleteTripDetails = async (tripId) => {
+    const trip = await getTripById(tripId);
+    if (!trip) return null;
 
-    const startStation = await getStationById(route.startStation);
-    const endStation = await getStationById(route.endStation);
-    const routeSchedules = await getSchedulesByRoute(routeId);
+    const startStation = await getStationById(trip.startStation);
+    const endStation = await getStationById(trip.endStation);
+    const tripSchedules = await getSchedulesByTrip(tripId);
 
     return {
-        ...route,
+        ...trip,
         startStationDetails: startStation,
         endStationDetails: endStation,
-        schedules: routeSchedules
+        schedules: tripSchedules
     };
 };
 
-export const calculateTicketPrice = async (routeId, className) => {
-    const route = await getRouteById(routeId);
+export const calculateTicketPrice = async (tripId, className) => {
+    const trip = await getTripById(tripId);
     const ticketClass = await getTicketClassByName(className);
 
-    if (!route || !ticketClass) return null;
+    if (!trip || !ticketClass) return null;
 
-    return route.distance * ticketClass.pricePerKm;
+    return trip.distance * ticketClass.pricePerKm;
 };
 
-export const getTicketOptionsForRoute = async (routeId) => {
-    const route = await getRouteById(routeId);
-    if (!route) return null;
+export const getTicketOptionsForTrip = async (tripId) => {
+    const trip = await getTripById(tripId);
+    if (!trip) return null;
 
     return db().ticketClasses.map(tc => ({
         class: tc.class,
         name: tc.name,
-        price: route.distance * tc.pricePerKm,
+        price: trip.distance * tc.pricePerKm,
         amenities: tc.amenities,
         description: tc.description
     }));
@@ -179,30 +179,30 @@ export const getTicketOptionsForSchedule = async (scheduleId) => {
     const schedule = await getScheduleById(scheduleId);
     if (!schedule) return null;
 
-    return getTicketOptionsForRoute(schedule.routeId);
+    return getTicketOptionsForTrip(schedule.routeId);
 };
 
-export const isRouteOperating = async (routeId) => {
-    const route = await getRouteById(routeId);
-    if (!route) return false;
+export const isTripOperating = async (tripId) => {
+    const trip = await getTripById(tripId);
+    if (!trip) return false;
 
     const currentMonth = new Date().getMonth() + 1;
-    return route.operatingMonths.includes(currentMonth);
+    return trip.operatingMonths.includes(currentMonth);
 };
 
-export const getScheduleWithRoute = async (scheduleId) => {
+export const getScheduleWithTrip = async (scheduleId) => {
     const schedule = await getScheduleById(scheduleId);
     if (!schedule) return null;
 
-    const route = await getRouteById(schedule.routeId);
+    const trip = await getTripById(schedule.routeId);
 
     return {
         ...schedule,
-        routeDetails: route
+        tripDetails: trip
     };
 };
 
-export const searchRoutes = async (keyword) => {
+export const searchTrips = async (keyword) => {
     const searchTerm = keyword.toLowerCase();
     return db().routes.filter(route => {
         return (

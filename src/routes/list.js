@@ -1,14 +1,14 @@
-import { getAllRoutes, getListOfRegions, getListOfSeasons } from '../models/model.js';
+import { getAllTrips, getListOfRegions, getListOfSeasons } from '../models/model.js';
 
 export default async (req, res) => {
     const regions = await getListOfRegions();
-    const routes = await getAllRoutes();
+    const trips = await getAllTrips();
     const seasons = await getListOfSeasons();
 
-    res.render('routes/list', { 
-        title: 'Scenic Train Routes',
+    res.render('trips/list', {
+        title: 'Scenic Train Trips',
         regions,
-        routes,
+        trips,
         seasons
     });
 };

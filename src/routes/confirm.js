@@ -5,7 +5,7 @@ export default async (req, res) => {
 
     const confirmation = await getConfirmationById(confirmationId);
 
-    res.render('routes/confirm', {
+    res.render('trips/confirm', {
         title: 'Trip Confirmation',
         confirmation
     });

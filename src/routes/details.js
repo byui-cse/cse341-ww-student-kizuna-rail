@@ -1,14 +1,14 @@
-import { getRouteById, getSchedulesByRoute } from '../models/model.js';
+import { getSchedulesByTrip, getTripById } from '../models/model.js';
 
 export default async (req, res) => {
-    const { routeId } = req.params;
-    const details = await getRouteById(routeId);
-    details.schedules = await getSchedulesByRoute(routeId);
+    const { tripId } = req.params;
+    const details = await getTripById(tripId);
+    details.schedules = await getSchedulesByTrip(tripId);
 
-    // TODO: getCompleteRouteDetails instead
+    // TODO: getCompleteTripDetails instead
 
-    res.render('routes/details', { 
-        title: 'Route Details',
+    res.render('trips/details', {
+        title: 'Trip Details',
         details
     });
 };

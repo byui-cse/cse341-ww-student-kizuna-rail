@@ -1,16 +1,16 @@
 import { bookingPage, processBookingRequest } from './book.js';
 import confirmationPage from './confirm.js';
-import listRoutesPage from './list.js';
-import routeDetailsPage from './details.js';
+import listTripsPage from './list.js';
+import tripDetailsPage from './details.js';
 import { Router } from 'express';
 
 const router = Router();
 
-// List all routes
-router.get('/', listRoutesPage);
+// List all trips
+router.get('/', listTripsPage);
 
-// Route details page
-router.get('/:routeId', routeDetailsPage);
+// Trip details page
+router.get('/:tripId', tripDetailsPage);
 
 // Book ticket
 router.get('/booking/:scheduleId', bookingPage);

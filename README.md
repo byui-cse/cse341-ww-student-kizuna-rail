@@ -22,8 +22,8 @@ These skills define professional software engineering. Most developers spend 80%
 ## Who is this for?
 
 - **Students**: This project was created for university-level software development courses, but anyone learning web development is welcome to use it
-- **Self-learners**: Found this repo on your own? Great! Work through the scenarios at your own pace
-- **Educators**: Feel free to incorporate these scenarios into your curriculum
+- **Self-learners**: Found this repo on your own? Great! Work through the refactors at your own pace
+- **Educators**: Feel free to incorporate these exercises into your curriculum
 
 ## Why Brownfield Development?
 
@@ -35,12 +35,12 @@ Greenfield tutorials teach you syntax. Brownfield projects teach you engineering
 
 **This codebase contains intentional technical debt.** You'll find suboptimal architecture, missing error handling, inconsistent patterns, and code that needs refactoring—all by design. These are learning opportunities, not mistakes.
 
-**Do not submit PRs to fix code issues.** The technical debt, bugs, and architectural issues are intentional teaching moments for developers working through the scenarios.
+**Do not submit PRs to fix code issues.** The technical debt, bugs, and architectural issues are intentional teaching moments for developers working through the exercises.
 
 **However**, if you find:
 - Actual errors that break the learning experience
-- Typos in documentation or scenario descriptions
-- Ideas for new scenarios or challenges
+- Typos in documentation
+- Ideas for new challenges
 
 Please open an issue or submit a PR! Contributions to improve the educational value are welcome.
 
@@ -60,13 +60,12 @@ This repository is set up as a **GitHub template**. Use the template feature to 
    ```
 5. Install dependencies: `pnpm install`
 6. Start the development server: `pnpm run dev`
-7. Visit `/scenarios` to see available development challenges
 
-Each scenario simulates realistic work situations requiring reverse engineering, refactoring, debugging, or feature extension.
+This project simulates realistic work situations requiring reverse engineering, refactoring, debugging, or feature extension.
 
 ### For Contributors
 
-If you want to contribute improvements to the challenge scenarios, documentation, or educational content itself:
+If you want to contribute improvements to the documentation or educational content itself:
 
 1. **Fork** this repository (not "Use this template")
 2. Create a feature branch for your changes
