@@ -4,7 +4,7 @@ import Path from 'path';
 import routes from './src/routes/router.js';
 import pkg from './package.json' with { type: 'json' };
 import { fileURLToPath } from 'url';
-import { initializeDatabase } from './src/models/db-in-file.js';
+import { connectToDb } from './src/db/connect.js';
 
 /**
  * Declare Important Variables
@@ -13,7 +13,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = Path.dirname(__filename);
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 const PORT = process.env.PORT || 3000;
-const DATABASE_FILE = Path.join(__dirname, 'src/models/db-in-file.json');
 
 /**
  * Setup Express Server
@@ -24,8 +23,8 @@ const app = express();
  * Configure Express middleware
  */
 
-// Setup file-based database
-initializeDatabase(DATABASE_FILE);
+// Connect to MongoDB before accepting requests.
+await connectToDb();
 
 // Add version info to res.locals for access in templates
 app.use((req, res, next) => {
