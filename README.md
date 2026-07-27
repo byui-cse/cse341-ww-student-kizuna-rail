@@ -59,7 +59,9 @@ This repository is set up as a **GitHub template**. Use the template feature to 
    cd YOUR-REPO-NAME
    ```
 5. Install dependencies: `pnpm install`
-6. Start the development server: `pnpm run dev`
+6. Copy `.env.example` to `.env` and set `MONGODB_URI` (and optionally `MONGODB_DB_NAME`) for your MongoDB instance.
+7. Import the starter data with `pnpm run db:import`. This replaces the starter collections and clears any confirmations in that database.
+8. Start the development server: `pnpm run dev`
 
 This project simulates realistic work situations requiring reverse engineering, refactoring, debugging, or feature extension.
 
@@ -78,7 +80,7 @@ Forking maintains the connection to the original repository and allows you to co
 - **Backend**: Node.js with Express framework
 - **Templating**: EJS
 - **Styling**: Modern nested CSS with custom properties
-- **Database**: JSON-based data store, pretending to be a relational database
+- **Database**: MongoDB, using the official MongoDB Node.js driver
 
 ## Skills You'll Develop
 

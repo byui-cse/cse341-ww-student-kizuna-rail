@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "routeId": "alpine-panorama",
+        "tripId": "alpine-panorama",
         "departureTime": "08:30",
         "arrivalTime": "13:00",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday"],
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "routeId": "alpine-panorama",
+        "tripId": "alpine-panorama",
         "departureTime": "13:15",
         "arrivalTime": "17:45",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "saturday"],
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "routeId": "coastal-breeze",
+        "tripId": "coastal-breeze",
         "departureTime": "09:00",
         "arrivalTime": "14:00",
         "daysOfWeek": ["monday", "wednesday", "friday", "saturday", "sunday"],
@@ -25,7 +25,7 @@
     },
     {
         "id": 4,
-        "routeId": "coastal-breeze",
+        "tripId": "coastal-breeze",
         "departureTime": "14:30",
         "arrivalTime": "19:30",
         "daysOfWeek": ["tuesday", "thursday", "saturday", "sunday"],
@@ -33,7 +33,7 @@
     },
     {
         "id": 5,
-        "routeId": "sakura-valley",
+        "tripId": "sakura-valley",
         "departureTime": "10:00",
         "arrivalTime": "12:30",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "friday", "saturday"],
@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "routeId": "sakura-valley",
+        "tripId": "sakura-valley",
         "departureTime": "15:00",
         "arrivalTime": "17:30",
         "daysOfWeek": ["monday", "tuesday", "thursday", "friday", "sunday"],
@@ -49,7 +49,7 @@
     },
     {
         "id": 7,
-        "routeId": "gorge-explorer",
+        "tripId": "gorge-explorer",
         "departureTime": "09:30",
         "arrivalTime": "11:00",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "saturday"],
@@ -57,7 +57,7 @@
     },
     {
         "id": 8,
-        "routeId": "gorge-explorer",
+        "tripId": "gorge-explorer",
         "departureTime": "12:00",
         "arrivalTime": "13:30",
         "daysOfWeek": ["monday", "wednesday", "thursday", "friday", "sunday"],
@@ -65,7 +65,7 @@
     },
     {
         "id": 9,
-        "routeId": "gorge-explorer",
+        "tripId": "gorge-explorer",
         "departureTime": "14:30",
         "arrivalTime": "16:00",
         "daysOfWeek": ["saturday", "sunday"],
@@ -73,7 +73,7 @@
     },
     {
         "id": 10,
-        "routeId": "winter-wetlands",
+        "tripId": "winter-wetlands",
         "departureTime": "11:00",
         "arrivalTime": "13:00",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday"],
@@ -81,7 +81,7 @@
     },
     {
         "id": 11,
-        "routeId": "romantic-gorge",
+        "tripId": "romantic-gorge",
         "departureTime": "09:00",
         "arrivalTime": "09:30",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "saturday"],
@@ -89,7 +89,7 @@
     },
     {
         "id": 12,
-        "routeId": "romantic-gorge",
+        "tripId": "romantic-gorge",
         "departureTime": "11:00",
         "arrivalTime": "11:30",
         "daysOfWeek": ["monday", "wednesday", "thursday", "friday", "sunday"],
@@ -97,7 +97,7 @@
     },
     {
         "id": 13,
-        "routeId": "romantic-gorge",
+        "tripId": "romantic-gorge",
         "departureTime": "13:00",
         "arrivalTime": "13:30",
         "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday"],
@@ -105,7 +105,7 @@
     },
     {
         "id": 14,
-        "routeId": "romantic-gorge",
+        "tripId": "romantic-gorge",
         "departureTime": "15:00",
         "arrivalTime": "15:30",
         "daysOfWeek": ["saturday", "sunday"],
