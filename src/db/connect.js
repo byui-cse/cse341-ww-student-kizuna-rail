@@ -3,19 +3,21 @@ import { MongoClient } from 'mongodb';
 let database;
 let client;
 
-const connectToDb = async () => {
+const connectToDb = async (options = {}) => {
   if (database) {
     return database;
   }
 
-  const connectionString = process.env.MONGODB_URI;
+  const connectionString = options.connectionString || process.env.MONGODB_URI;
+  const databaseName = options.databaseName || process.env.MONGODB_DB_NAME || 'practice';
+
   if (!connectionString) {
     throw new Error('MONGODB_URI is required.');
   }
 
   client = new MongoClient(connectionString);
   await client.connect();
-  database = client.db(process.env.MONGODB_DB_NAME || 'practice');
+  database = client.db(databaseName);
   return database;
 };
 

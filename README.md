@@ -58,10 +58,21 @@ This repository is set up as a **GitHub template**. Use the template feature to 
    git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
    cd YOUR-REPO-NAME
    ```
-5. Install dependencies: `pnpm install`
+5. Install dependencies: `npm install`
 6. Copy `.env.example` to `.env` and set `MONGODB_URI` (and optionally `MONGODB_DB_NAME`) for your MongoDB instance.
-7. Import the starter data with `pnpm run db:import`. This replaces the starter collections and clears any confirmations in that database.
-8. Start the development server: `pnpm run dev`
+7. Import the starter data with `npm run db:import`. This replaces the starter collections and clears any confirmations in that database.
+8. Run the automated tests with `npm test`. Tests use a temporary local database and do not change the database in your `.env` file.
+9. Start the development server: `npm run dev`
+
+The first test run may take longer because MongoDB Memory Server needs to download a MongoDB program. Later test runs reuse that download. Use `npm run test:watch` if you want Vitest to rerun related tests while you work.
+
+### Automated Test Setup
+
+The application and automated tests share the database initialization function in `src/db/initialize.js`. The normal `db:import` command runs it against the database configured in `.env`. Automated tests run it against a temporary MongoDB database instead.
+
+Vitest starts the temporary database once for the complete test run. Before each individual test, the setup clears that temporary database and restores the starter data. This means each test begins with the same data, and test changes cannot reach the database configured in `.env`.
+
+See `tests/trains.test.js` for example endpoint tests that use Supertest to send requests to the real `/api/trains` route.
 
 This project simulates realistic work situations requiring reverse engineering, refactoring, debugging, or feature extension.
 
@@ -81,6 +92,7 @@ Forking maintains the connection to the original repository and allows you to co
 - **Templating**: EJS
 - **Styling**: Modern nested CSS with custom properties
 - **Database**: MongoDB, using the official MongoDB Node.js driver
+- **Testing**: Vitest, Supertest, and MongoDB Memory Server
 
 ## Skills You'll Develop
 

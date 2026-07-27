@@ -1,7 +1,7 @@
 {
 	"name": "kizuna-rail-byui-demo",
 	"dependencies": {
-		"ejs": "^3.1.10",
+		"ejs": "^6.0.1",
 		"express": "^5.1.0",
 		"mongodb": "^7.5.0"
 	},
@@ -10,6 +10,8 @@
 		"dev": "nodemon --env-file=.env server.js",
 		"reset": "node restore.js 3000 3001",
 		"start": "node --env-file=.env server.js",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix"
 	},
@@ -17,7 +19,10 @@
 	"version": "1.0.0",
 	"devDependencies": {
 		"eslint": "^10.6.0",
+		"mongodb-memory-server": "^11.2.0",
 		"nodemon": "^3.1.10",
+		"supertest": "^7.2.2",
+		"vitest": "^4.1.10",
 		"ws": "^8.18.3"
 	}
 }
